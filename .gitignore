@@ -1,0 +1,13 @@
+#忽略所有的配置文件和项目设置文件
+/**/.classpath
+/**/.project
+/**/bin
+
+#以下为IntelliJ需要忽略的文件
+/**/.idea
+/**/*.ipr
+/**/*.iml
+/**/*.iws
+/**/out
+/**/java.hprof.txt
+/**/.gitattributes
