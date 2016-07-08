@@ -2,6 +2,7 @@
 /**/.classpath
 /**/.project
 /**/bin
+-multilnst
 
 #以下为IntelliJ需要忽略的文件
 /**/.idea
