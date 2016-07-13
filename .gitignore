@@ -11,3 +11,8 @@ bin/
 out/
 java.hprof.txt
 .gitattributes
+
+#JVM调试文件
+java*.index
+java*.hprof
+java*.threads
