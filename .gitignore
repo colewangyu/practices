@@ -16,3 +16,4 @@ java.hprof.txt
 java*.index
 java*.hprof
 java*.threads
+java*.zip
