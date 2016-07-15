@@ -1,8 +1,11 @@
 package OOMPractice;
 
 /**
- * VM Args: -Xss128k
- * !!!!!此程序可能导致windows系统假死，需要等一两分钟甚至更久才能恢复。
+ * VM Args: -Xss2m
+ * Java虚拟机栈OOM试验
+ * 
+ * !!!!!此程序会导致windows系统假死，需重启才能恢复
+ * !!!!!此程序会导致MacOS CPU占用率100%，从而奇卡无比。
  * @author wy
  *
  */

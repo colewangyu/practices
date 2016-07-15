@@ -2,6 +2,8 @@ package OOMPractice;
 
 /**
  * VM args: -Xss128k
+ * JavaVM栈SOF试验
+ * 
  * @author wy
  */
 public class JavaVMStackSOF {
