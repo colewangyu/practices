@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * VM Args: -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError
+ * Java堆OOM试验
+ * 
  * @author wy
  *
  */
