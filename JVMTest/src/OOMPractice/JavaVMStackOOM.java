@@ -1,7 +1,7 @@
 package OOMPractice;
 
 /**
- * VM Args: -Xss2m
+ * VM Args: -Xss1000m
  * Java虚拟机栈OOM试验
  * 
  * !!!!!此程序会导致windows系统假死，需重启才能恢复

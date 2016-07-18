@@ -7,6 +7,7 @@ import java.util.List;
  * VM Args: -XX:PermSize=10M -XX:MaxPermSize=10M
  * 运行时常量池OOM实验
  * 
+ * @version JDK1.6_u45
  * @author wy
  *
  */
