@@ -1,4 +1,4 @@
-package InnerClass;
+package MyTest.InnerClass;
 
 /**
  * [说明]

@@ -1,3 +1,5 @@
+package MyTest;
+
 /**
  * Created by cole on 15/12/27.
  */
