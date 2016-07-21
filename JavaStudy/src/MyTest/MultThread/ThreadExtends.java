@@ -1,4 +1,4 @@
-package MultThread;
+package MyTest.MultThread;
 
 /**
  * Created by cole on 2016-05-26.
