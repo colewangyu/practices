@@ -19,7 +19,7 @@ public class FinalizeEscapeGC {
 	protected void finalize() throws Throwable {
 		super.finalize();
 		System.out.println("Finalize method executed!");
-		//自我救赎
+		//自我救赎。
 		FinalizeEscapeGC.SAVE_HOCK = this;
 	}
 	
@@ -37,7 +37,7 @@ public class FinalizeEscapeGC {
 			System.out.println("No, I am dead :(");
 		}
 		
-		//第二段代码与第一段完全一致
+		//第二段代码与第一段完全一致。
 		SAVE_HOCK = null;
 		//同一个对象只能被调用一次finalize()，此处自我救赎失败。
 		System.gc();
