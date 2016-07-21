@@ -1,7 +1,13 @@
 /**
  * Created by cole on 4/24/16.
  */
-public class T {
+public class IsPalindrome {
+    /**
+     * Determine weather a integer number is palindrome.
+     *
+     * @param x number of type integer
+     * @return true if input is a palindrome
+     */
         public boolean isPalindrome(int x) {
             char[] s = new Integer(x).toString().toCharArray();
             int halfLen = s.length / 2;
