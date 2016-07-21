@@ -27,8 +27,9 @@ public class FinalizeEscapeGC {
 		SAVE_HOCK = new FinalizeEscapeGC();
 		
 		SAVE_HOCK = null;
-		//gc()会执行finalize()，但优先级比较低，所以需要让主线程暂停0.5s。
+		//gc()会执行finalize()。
 		System.gc();
+		//finalize()优先级比较低，所以需要让主线程暂停0.5s。
 		Thread.sleep(500);
 		if(SAVE_HOCK != null) {
 			SAVE_HOCK.isAlive();
