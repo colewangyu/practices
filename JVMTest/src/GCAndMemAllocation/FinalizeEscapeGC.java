@@ -19,7 +19,7 @@ public class FinalizeEscapeGC {
 	protected void finalize() throws Throwable {
 		super.finalize();
 		System.out.println("Finalize method executed!");
-		//自我救赎
+		//自我救赎。
 		FinalizeEscapeGC.SAVE_HOCK = this;
 	}
 	
@@ -27,8 +27,9 @@ public class FinalizeEscapeGC {
 		SAVE_HOCK = new FinalizeEscapeGC();
 		
 		SAVE_HOCK = null;
-		//gc()会执行finalize()，但优先级比较低，所以需要让主线程暂停0.5s。
+		//gc()会执行finalize()。
 		System.gc();
+		//finalize()优先级比较低，所以需要让主线程暂停0.5s。
 		Thread.sleep(500);
 		if(SAVE_HOCK != null) {
 			SAVE_HOCK.isAlive();
@@ -36,7 +37,7 @@ public class FinalizeEscapeGC {
 			System.out.println("No, I am dead :(");
 		}
 		
-		//第二段代码与第一段完全一致
+		//第二段代码与第一段完全一致。
 		SAVE_HOCK = null;
 		//同一个对象只能被调用一次finalize()，此处自我救赎失败。
 		System.gc();
