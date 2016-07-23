@@ -65,4 +65,29 @@ public class ReflectTest {
     public void testGetFieldValue() throws Exception {
         t.getFieldValue();
     }
+
+    @Test
+    public void testSetFieldValue() throws Exception {
+        t.setFieldValue();
+    }
+
+    @Test
+    public void testCopyOfArray() throws Exception {
+        int[] arrInt = new int[]{1,2,3};
+        int[] copyArrInt;
+        copyArrInt = (int[]) t.copyOfArray(arrInt, 5);
+        copyArrInt[3] = 4;
+        copyArrInt[4] = 5;
+        String[] arrStr = new String[]{"1","2","3"};
+        String[] copyArrStr;
+        copyArrStr = (String[]) t.copyOfArray(arrStr, 5);
+        copyArrStr[3] = "4";
+        copyArrStr[4] = "5";
+        assertArrayEquals(copyArrStr, new String[]{"1","2","3","4","5"});
+    }
+
+    @Test
+    public void testInvokeMethod() throws Exception {
+        t.invokeMethod();
+    }
 }
