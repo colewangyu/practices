@@ -215,10 +215,12 @@ public class Reflect {
         Employee e = new Employee();
         //获取对象class
         Class clz = e.getClass();
+
         //获取对象的Method，使用getMethod()方法可以获取此类和父类的public方法
         Method m1 = clz.getMethod("setName", String.class);
         Method m2 = clz.getMethod("getName");
-        //通过Method.invoke调用该方法
+        
+	//通过Method.invoke调用该方法
         m1.invoke(e, "Cole");
         System.out.println(m2.invoke(e));
     }
