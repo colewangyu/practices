@@ -7,6 +7,7 @@ public class Sub extends Super {
 
     public static void main(String[] args) {
         Sub t = new SubSub();
+
         t.funStatic();
         t.funFinal();
         t.funPrivate();
