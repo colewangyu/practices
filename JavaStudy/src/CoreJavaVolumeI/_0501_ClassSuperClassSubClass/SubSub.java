@@ -12,4 +12,18 @@ public class SubSub extends Sub {
         System.out.println(t.getClass() == Super.class);
         t.funStatic();
     }
+
+    /**
+     * 测试静态绑定private方法
+     */
+    private void funPrivate() {
+        System.out.println("被调用类：SubSub，调用类：" + this.getClass().getName() + "，调用方法：" + Thread.currentThread() .getStackTrace()[1].getMethodName());
+    }
+
+    /**
+     * 测试动态绑定
+     */
+    public void funDynamic() {
+        System.out.println("被调用类：SubSub，调用类：" + this.getClass().getName() + "，调用方法：" + Thread.currentThread() .getStackTrace()[1].getMethodName());
+    }
 }
