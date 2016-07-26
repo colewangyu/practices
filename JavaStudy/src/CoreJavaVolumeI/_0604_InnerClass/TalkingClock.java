@@ -2,6 +2,8 @@ package CoreJavaVolumeI._0604_InnerClass;
 
 import CoreJavaVolumeI._0507_Reflect.Reflect;
 
+import CoreJavaVolumeI._0507_Reflect.Reflect;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
