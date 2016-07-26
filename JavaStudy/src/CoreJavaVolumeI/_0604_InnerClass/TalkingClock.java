@@ -1,4 +1,6 @@
-package CoreJavaVolumeI._0601_InterfaceAndInnerClass;
+package CoreJavaVolumeI._0604_InnerClass;
+
+import CoreJavaVolumeI._0507_Reflect.Reflect;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -60,6 +62,14 @@ public class TalkingClock {
         System.exit(0);*/
 
         TalkingClock t2 = new TalkingClock(1000, true);
+        //查看内部类中编译后的方法和属性
+        Reflect r = new Reflect();
+        try {
+            r.getDeclaredMethods("CoreJavaVolumeI._0604_InnerClass.TalkingClock");
+            r.getDeclaredFields("CoreJavaVolumeI._0604_InnerClass.TalkingClock");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         t2.start();
         JOptionPane.showMessageDialog(null, "退出程序？");
         System.exit(0);

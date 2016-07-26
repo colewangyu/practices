@@ -46,6 +46,7 @@ public class Reflect {
 
     /**
      * 测试java.lang.class类的getField()方法
+     * 获取此类和超类所有的public的属性和成员
      *
      * @param clzName 类名
      * @throws ClassNotFoundException
@@ -59,6 +60,7 @@ public class Reflect {
 
     /**
      * 测试java.lang.class类的getMethods()方法
+     * 获取此类和超类所有的public的公有方法
      *
      * @param clzName 类名
      * @throws ClassNotFoundException
@@ -72,6 +74,7 @@ public class Reflect {
 
     /**
      * 测试java.lang.class类的getConstructors()方法
+     * 获取此类所有的public的构造函数（不包括超类构造函数）
      *
      * @param clzName 类名
      * @throws ClassNotFoundException
@@ -85,6 +88,7 @@ public class Reflect {
 
     /**
      * 测试java.lang.class类的getDeclaredFields()方法
+     * 获取此类所有的属性和成员
      *
      * @param clzName 类名
      * @throws ClassNotFoundException
@@ -98,6 +102,7 @@ public class Reflect {
 
     /**
      * 测试java.lang.class类的getDeclaredMethods()方法
+     * 获取此类所有的方法
      *
      * @param clzName 类名
      * @throws ClassNotFoundException
@@ -111,6 +116,7 @@ public class Reflect {
 
     /**
      * 测试java.lang.class类的getDeclaredConstructors()方法
+     * 获取此类所有的构造函数
      *
      * @param clzName 类名
      * @throws ClassNotFoundException

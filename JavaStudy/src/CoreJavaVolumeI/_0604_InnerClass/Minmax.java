@@ -1,9 +1,12 @@
-package CoreJavaVolumeI._0601_InterfaceAndInnerClass;
+package CoreJavaVolumeI._0604_InnerClass;
 
 /**
  * Created by wy on 2016-07-25.
  */
 public class Minmax {
+    /**
+     * 静态内部类
+     */
     public static class Pair {
         private double min;
         private double max;
