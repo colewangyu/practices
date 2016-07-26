@@ -8,6 +8,11 @@ public class Minmax {
         private double min;
         private double max;
 
+        /**
+         * 会自动判断min和max的大小来进行初始化
+         * @param min
+         * @param max
+         */
         public Pair(double min, double max) {
             if(min > max) {
                 min = min - max;
