@@ -98,7 +98,21 @@ public class SortTest {
 
     @Test
     public void testHeapSort() throws Exception {
+        Assert.assertArrayEquals(Sort.heapSort(test01), new Integer[]{1, 2, 3, 4, 5});
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.heapSort(test02));
+        Assert.assertArrayEquals(Sort.heapSort(test03), new Integer[]{1});
 
+        Assert.assertArrayEquals(Sort.heapSort(test04), a);
+
+        Assert.assertArrayEquals(Sort.heapSort(test05), b);
+
+//        Assert.assertEquals(Sort.heapSort(test06), c);
+        Assert.assertArrayEquals(Sort.heapSort(test11), new Character[]{'a', 'b', 'c', 'd', 'e'});
+        Assert.assertArrayEquals(Sort.heapSort(test12), new Character[]{'c'});
+        Assert.assertArrayEquals(Sort.heapSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
+        Assert.assertArrayEquals(Sort.heapSort(test22), new Double[]{1.11});
     }
 
     @Test

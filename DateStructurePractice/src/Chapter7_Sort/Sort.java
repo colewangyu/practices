@@ -1,5 +1,7 @@
 package Chapter7_Sort;
 
+import Chapter6_PriorityQueue.BinaryHeap;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -21,8 +23,10 @@ public class Sort {
      * @param <T>
      * @return
      */
-    public static <T extends Comparable<? super T>> T[] sort(T[] array) {
-        Arrays.sort();
+    public static <T extends Comparable<? super T>> T[] sort(T[] array) {  //T必须实现或继承Comparable，T可以比较的类型为T或者T的父类。
+        Arrays.sort(array);
+        //TODO
+        return null;
     }
 
     /**
@@ -32,7 +36,7 @@ public class Sort {
      * 希尔增量：1，2，4，8..
      *
      * @param array 待排序的数组（接受任意实现了comparable接口的对象）
-     * @return 排好序的数组
+     * @return 从小到大（正序）排好序的数组
      */
     public static <T extends Comparable<? super T>> T[] insertSort(T[] array) {
         /**
@@ -67,7 +71,7 @@ public class Sort {
      * 希巴德增量：1，3，7，...，2^k - 1
      *
      * @param array 待排序的数组（接受任意实现了comparable接口的对象）
-     * @return 排好序的数组
+     * @return 从小到大（正序）排好序的数组
      */
     public static <T extends Comparable<? super T>> T[] shellSort(T[] array) {
         /**
@@ -104,7 +108,20 @@ public class Sort {
      * @return 排好序的数组
      */
     public static <T extends Comparable<? super T>> T[] heapSort(T[] array) {
-        return null;
+        /**
+         * 数据有效性验证
+         */
+        if (array == null) {
+            throw new NullPointerException("待排序数组为空！");
+        }
+
+        /**
+         * 堆排序主体
+         */
+        BinaryHeap<T> heap = new BinaryHeap(array);
+        for(int i = 0; i < array.length; i++)
+            array[i] = heap.deleteMin();
+        return array;
     }
 
     /**

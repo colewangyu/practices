@@ -32,6 +32,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
         buildHeap();
     }
 
+
     /**
      * 在下一个可插入位置（不能破坏完全二叉树的结构）插入一个空穴，使用上滤来找到其正确的位置
      *
@@ -42,10 +43,14 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
             enlargeArray(array.length * 2 + 1);
 
         //上滤
+        //1. 在可插入位置上建立穴
         int hole = ++currentSize;
+        //2. 与父亲节点比较，直到比父亲节点大，或者到根节点
         for (; hole > 1 && x.compareTo(array[hole / 2]) < 0; hole /= 2) {
+            //2.1 移动父亲节点的值
             array[hole] = array[hole / 2];
         }
+        //3. 插入值，完成上滤
         array[hole] = x;
     }
 
@@ -81,28 +86,37 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> {
 
     /**
      * 下滤
-     *
+     *  步骤：
+     *    1. 保存根元素
+     *    2. 遍历左右儿子，并比较左右儿子，将较小值放入父亲节点
+     *    3. 重复第2步，直到下滤到顶部
      * @param hole
      */
     private void percolateDown(int hole) {
         int child;
+        // 1. 保存需要更改位置的元素（最后一个元素）
         AnyType tmp = array[hole];
+        // 2. 遍历左右儿子节点
         for (; hole * 2 <= currentSize; hole = child) {
             child = hole * 2;
+            // 2.1 存在右儿子，并且右儿子比左儿子小
             if (child + 1 <= currentSize && array[child].compareTo(array[child + 1]) > 0) {
+                // 2.1 将指针指向较小的右儿子
                 child++;
-                if (array[child].compareTo(tmp) < 0) {
-                    array[hole] = array[child];
-                } else {
-                    break;
-                }
+            }
+            // 2.2 较小的儿子与根元素比较
+            if (array[child].compareTo(tmp) < 0) {
+                // 2.2 如果较小儿子比根元素小则将其设置为父节点
+                array[hole] = array[child];
+            } else {
+                break;
             }
         }
         array[hole] = tmp;
     }
 
     /**
-     * 将乱序的数组，狗造成二叉堆
+     * 将乱序的数组，构造成二叉堆
      */
     private void buildHeap() {
         for (int i = currentSize / 2; i > 0; i--) {
