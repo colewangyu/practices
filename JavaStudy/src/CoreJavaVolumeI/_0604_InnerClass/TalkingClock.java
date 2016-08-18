@@ -24,7 +24,7 @@ public class TalkingClock {
         this.interval = interval;
         this.beep = beep;
     }
-    public void start(int interval, boolean beep) {
+    public void start(int interval, final boolean beep) {
         //局部内部类
         class TimePrinter implements ActionListener {
             @Override
