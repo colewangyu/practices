@@ -44,7 +44,8 @@ public class RandomUtils {
             Iterator iter = map.entrySet().iterator();
             index = 0;
             while (iter.hasNext()) {
-//                Map.Entry Double.entry.getValue();
+                Map.Entry entry = (Map.Entry) iter.next();
+                a[index] = (Double) entry.getValue();
                 index++;
             }
 
