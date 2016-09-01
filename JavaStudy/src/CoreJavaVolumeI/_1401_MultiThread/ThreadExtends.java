@@ -1,4 +1,4 @@
-package MyTest.MultThread;
+package CoreJavaVolumeI._1401_MultiThread;
 
 /**
  * Created by cole on 2016-05-26.
