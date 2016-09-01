@@ -20,6 +20,7 @@ public class SortTest {
     static Integer[] test04;//10k
     static Integer[] test05;//100k
     static Integer[] test06;//1m
+    static Integer[] test07;
     static Character[] test11;
     static Character[] test12;
     static Double[] test21;
@@ -36,6 +37,7 @@ public class SortTest {
         test04 = getDisorderIntegerArray(0, 10000,10000, false);
         test05 = getDisorderIntegerArray(0,100000,10000,false);
 //        test06 = RandomUtils.getDisorderIntegerArray(0,1000000,false);
+        test07 = new Integer[]{1,1,1,1,1};
         test11 = new Character[]{'c', 'a', 'b', 'e', 'd'};
         test12 = new Character[]{'c'};
         test21 = new Double[]{3.33, 1.11, 2.22, 5.55, 4.44};
@@ -103,12 +105,41 @@ public class SortTest {
 
     @Test
     public void testMergeSort() throws Exception {
+        Assert.assertArrayEquals(Sort.mergeSort(test01), new Integer[]{1, 2, 3, 4, 5});
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.mergeSort(test02));
+        Assert.assertArrayEquals(new Integer[]{1},Sort.mergeSort(test03));
 
+        Assert.assertArrayEquals(Sort.mergeSort(test04), a);
+
+        Assert.assertArrayEquals(Sort.mergeSort(test05), b);
+
+//        Assert.assertEquals(Sort.heapSort(test06), c);
+        Assert.assertArrayEquals(Sort.mergeSort(test11), new Character[]{'a', 'b', 'c', 'd', 'e'});
+        Assert.assertArrayEquals(Sort.mergeSort(test12), new Character[]{'c'});
+        Assert.assertArrayEquals(Sort.mergeSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
+        Assert.assertArrayEquals(Sort.mergeSort(test22), new Double[]{1.11});
     }
 
     @Test
     public void testQuickSort() throws Exception {
+        Assert.assertArrayEquals(Sort.quickSort(test01), new Integer[]{1, 2, 3, 4, 5});
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.quickSort(test02));
+        Assert.assertArrayEquals(new Integer[]{1},Sort.quickSort(test03));
+        Assert.assertArrayEquals(new Integer[]{1,1,1,1,1},Sort.quickSort(test07));
 
+        Assert.assertArrayEquals(Sort.quickSort(test04), a);
+
+        Assert.assertArrayEquals(Sort.quickSort(test05), b);
+
+//        Assert.assertEquals(Sort.heapSort(test06), c);
+        Assert.assertArrayEquals(Sort.quickSort(test11), new Character[]{'a', 'b', 'c', 'd', 'e'});
+        Assert.assertArrayEquals(Sort.quickSort(test12), new Character[]{'c'});
+        Assert.assertArrayEquals(Sort.quickSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
+        Assert.assertArrayEquals(Sort.quickSort(test22), new Double[]{1.11});
     }
 
     /**
