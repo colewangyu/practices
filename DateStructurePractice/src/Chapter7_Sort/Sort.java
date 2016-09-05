@@ -4,6 +4,7 @@ import Chapter6_PriorityQueue.BinaryHeap;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Stack;
 
 import static java.lang.Math.*;
 
@@ -131,7 +132,7 @@ public class Sort {
     /**
      * 【算法名】归并排序
      * 【算法思想】将待排序数组分为两部分，认为这两部分已排好序，依次将这两部分有序放入另一个数组空间中。
-     *            递归进行该操作，直到待排序的两部分数组只有一个元素。
+     * 递归进行该操作，直到待排序的两部分数组只有一个元素。
      * 【时间复杂度】O(NlogN)
      * 【其他】
      *
@@ -207,52 +208,100 @@ public class Sort {
             throw new NullPointerException("待排序数组为空！");
         }
 
-       quickSort(array, 0, array.length - 1);
+        quickSort(array, 0, array.length - 1);
         return array;
+    }
+
+    /**
+     * 快速排序的【递归】解法
+     * @param array
+     * @param left
+     * @param right
+     * @param <T>
+     */
+/*    public static <T extends Comparable<? super T>> void quickSort(T[] array, int left, int right) {
+        if (left < right) {
+            int i = partition(array, left, right);
+            quickSort(array, left, i - 1);
+            quickSort(array, i + 1, right);
+        }
+    }*/
+
+    /**
+     * 快速排序的【非递归】解法
+     * 【原理】使用栈来保存分割的下标
+     * 【效率】较递归方法略差，因为需要手动保存算法执行过程中的变量。
+     * @param array
+     * @param left
+     * @param right
+     * @param <T>
+     */
+    public static <T extends Comparable<? super T>> void quickSort(T[] array, int left, int right) {
+        if (left < right) {
+            Stack<Integer> s = new Stack();
+            // 先加入右边界
+            s.push(right);
+            // 再加入左边界
+            s.push(left);
+
+            int i;
+            while (!s.isEmpty()) {
+                left = s.pop();
+                right = s.pop();
+                i = partition(array, left, right);
+                if (i + 1 < right) {
+                    s.push(right);
+                    s.push(i + 1);
+                }
+                if (i - 1 > left) {
+                    s.push(i - 1);
+                    s.push(left);
+                }
+            }
+        }
+    }
+
+    private static <T extends Comparable<? super T>> int partition(T[] array, int left, int right) {
+        if (left < 0 || right >= array.length) throw new IllegalArgumentException("输入值越界");
+        if (left >= right) return left;
+
+        // 计算得出pivot
+        T pivot = median3(array, left, right);
+        // 划分较大元素区和较小元素区
+        int i = left;
+        int j = right;
+        while (true) {
+            // 从左边起找到第一个比pivot大的值
+            while (i < j && array[i].compareTo(pivot) <= 0) {
+                i++;
+            }
+            // 从右边起找到第一个比pivot小的值
+            while (i < j && array[j].compareTo(pivot) >= 0) {
+                j--;
+            }
+            if (i < j) {
+                swap(array, i, j);
+            } else {
+                break;
+            }
+        }
+        swap(array, i, right);
+        return i;
     }
 
     private static <T extends Comparable<? super T>> T median3(T[] arr, int left, int right) {
         int center = (left + right) / 2;
-        if(arr[center].compareTo(arr[left]) < 0) {
+        if (arr[center].compareTo(arr[left]) < 0) {
             swap(arr, center, left);
         }
-        if(arr[right].compareTo(arr[left]) < 0) {
+        if (arr[right].compareTo(arr[left]) < 0) {
             swap(arr, left, right);
         }
-        if(arr[center].compareTo(arr[right]) > 0) {
+        if (arr[center].compareTo(arr[right]) > 0) {
             swap(arr, left, right);
         }
         swap(arr, center, right);
         return arr[right];
-    }
-
-    private static <T extends Comparable<? super T>> void quickSort(T[] array, int left, int right) {
-        if(left < right) {
-            // 计算得出pivot
-            T pivot = median3(array, left, right);
-            // 划分较大元素区和较小元素区
-            int i = left;
-            int j = right;
-            while (true) {
-                // 从左边起找到第一个比pivot大的值
-                while (i < j && array[i].compareTo(pivot) <= 0) {
-                    i++;
-                }
-                // 从右边起找到第一个比pivot小的值
-                while (i < j && array[j].compareTo(pivot) >= 0) {
-                    j--;
-                }
-                if (i < j) {
-                    swap(array, i, j);
-                } else {
-                    break;
-                }
-            }
-            swap(array, i, right);
-
-            quickSort(array, left, i - 1);
-            quickSort(array, i + 1, right);
-        }
     }
 
     private static <T extends Comparable<? super T>> void swap(T[] arr, int index1, int index2) {
