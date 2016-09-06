@@ -35,7 +35,7 @@ public class SortTest {
         test02 = null;
         test03 = new Integer[]{1};
         test04 = getDisorderIntegerArray(0, 10000,10000, false);
-        test05 = getDisorderIntegerArray(0,100000,10000,false);
+        test05 = getDisorderIntegerArray(0,100000,100000,false);
 //        test06 = RandomUtils.getDisorderIntegerArray(0,1000000,false);
         test07 = new Integer[]{1,1,1,1,1};
         test11 = new Character[]{'c', 'a', 'b', 'e', 'd'};
@@ -62,29 +62,29 @@ public class SortTest {
 
     @Test
     public void testInsertSort() throws Exception {
-        expectedEx.expect(NullPointerException.class);
-        expectedEx.expectMessage("待排序数组为空！");
+
         Assert.assertArrayEquals(Sort.insertSort(test01), new Integer[]{1, 2, 3, 4, 5});
-        Assert.assertNull(Sort.insertSort(test02));
+
         Assert.assertArrayEquals(Sort.insertSort(test03), new Integer[]{1});
 
         Assert.assertArrayEquals(Sort.insertSort(test04), a);
 
-        Assert.assertArrayEquals(Sort.insertSort(test05), b);
-
+//        Assert.assertArrayEquals(Sort.insertSort(test05), b);
        // Assert.assertArrayEquals(Sort.insertSort(test06), c);
         Assert.assertArrayEquals(Sort.insertSort(test11), new Character[]{'a', 'b', 'c', 'd', 'e'});
         Assert.assertArrayEquals(Sort.insertSort(test12), new Character[]{'c'});
         Assert.assertArrayEquals(Sort.insertSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
         Assert.assertArrayEquals(Sort.insertSort(test22), new Double[]{1.11});
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.insertSort(test02));
     }
 
     @Test
     public void testShellSort() throws Exception {
-        expectedEx.expect(NullPointerException.class);
-        expectedEx.expectMessage("待排序数组为空！");
+
         Assert.assertArrayEquals(Sort.shellSort(test01), new Integer[]{1, 2, 3, 4, 5});
-        Assert.assertNull(Sort.shellSort(test02));
+
         Assert.assertArrayEquals(Sort.shellSort(test03), new Integer[]{1});
 
         Assert.assertArrayEquals(Sort.shellSort(test04), a);
@@ -96,14 +96,16 @@ public class SortTest {
         Assert.assertArrayEquals(Sort.shellSort(test12), new Character[]{'c'});
         Assert.assertArrayEquals(Sort.shellSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
         Assert.assertArrayEquals(Sort.shellSort(test22), new Double[]{1.11});
+
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.shellSort(test02));
     }
 
     @Test
     public void testHeapSort() throws Exception {
         Assert.assertArrayEquals(Sort.heapSort(test01), new Integer[]{1, 2, 3, 4, 5});
-        expectedEx.expect(NullPointerException.class);
-        expectedEx.expectMessage("待排序数组为空！");
-        Assert.assertNull(Sort.heapSort(test02));
+
         Assert.assertArrayEquals(Sort.heapSort(test03), new Integer[]{1});
 
         Assert.assertArrayEquals(Sort.heapSort(test04), a);
@@ -115,14 +117,16 @@ public class SortTest {
         Assert.assertArrayEquals(Sort.heapSort(test12), new Character[]{'c'});
         Assert.assertArrayEquals(Sort.heapSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
         Assert.assertArrayEquals(Sort.heapSort(test22), new Double[]{1.11});
+
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.heapSort(test02));
     }
 
     @Test
     public void testMergeSort() throws Exception {
         Assert.assertArrayEquals(Sort.mergeSort(test01), new Integer[]{1, 2, 3, 4, 5});
-        expectedEx.expect(NullPointerException.class);
-        expectedEx.expectMessage("待排序数组为空！");
-        Assert.assertNull(Sort.mergeSort(test02));
+
         Assert.assertArrayEquals(new Integer[]{1},Sort.mergeSort(test03));
 
         Assert.assertArrayEquals(Sort.mergeSort(test04), a);
@@ -134,14 +138,15 @@ public class SortTest {
         Assert.assertArrayEquals(Sort.mergeSort(test12), new Character[]{'c'});
         Assert.assertArrayEquals(Sort.mergeSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
         Assert.assertArrayEquals(Sort.mergeSort(test22), new Double[]{1.11});
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.mergeSort(test02));
     }
 
     @Test
     public void testQuickSort() throws Exception {
         Assert.assertArrayEquals(Sort.quickSort(test01), new Integer[]{1, 2, 3, 4, 5});
-        expectedEx.expect(NullPointerException.class);
-        expectedEx.expectMessage("待排序数组为空！");
-        Assert.assertNull(Sort.quickSort(test02));
+
         Assert.assertArrayEquals(new Integer[]{1},Sort.quickSort(test03));
         Assert.assertArrayEquals(new Integer[]{1,1,1,1,1},Sort.quickSort(test07));
 
@@ -154,6 +159,11 @@ public class SortTest {
         Assert.assertArrayEquals(Sort.quickSort(test12), new Character[]{'c'});
         Assert.assertArrayEquals(Sort.quickSort(test21), new Double[]{1.11, 2.22, 3.33, 4.44, 5.55});
         Assert.assertArrayEquals(Sort.quickSort(test22), new Double[]{1.11});
+        Assert.assertArrayEquals(new Integer[]{1,1,2,3,4,7}, Sort.quickSort(new Integer[]{1,3,4,1,2,7}));
+        Assert.assertArrayEquals(new Integer[]{1,1,3,3,4,4}, Sort.quickSort(new Integer[]{1,3,4,1,3,4}));
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("待排序数组为空！");
+        Assert.assertNull(Sort.quickSort(test02));
     }
 
     /**
