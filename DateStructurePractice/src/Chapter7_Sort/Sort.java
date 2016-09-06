@@ -271,7 +271,7 @@ public class Sort {
         int i = left;
         int j = right;
         while (true) {
-            // 从左边起找到第一个比pivot大的值
+            // 从左边起找到第一个比pivot大的值(因为pivot放在最右边,所以先移动左边)
             while (i < j && array[i].compareTo(pivot) <= 0) {
                 i++;
             }
@@ -297,10 +297,10 @@ public class Sort {
         if (arr[right].compareTo(arr[left]) < 0) {
             swap(arr, left, right);
         }
-        if (arr[center].compareTo(arr[right]) > 0) {
-            swap(arr, left, right);
+        if (arr[center].compareTo(arr[right]) < 0) {
+            swap(arr, center, right);
         }
-        swap(arr, center, right);
+//        swap(arr, center, right);
         return arr[right];
     }
 
