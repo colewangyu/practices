@@ -62,13 +62,9 @@ public class SortTest {
 
     @Test
     public void testInsertSort() throws Exception {
-
         Assert.assertArrayEquals(Sort.insertSort(test01), new Integer[]{1, 2, 3, 4, 5});
-
         Assert.assertArrayEquals(Sort.insertSort(test03), new Integer[]{1});
-
         Assert.assertArrayEquals(Sort.insertSort(test04), a);
-
 //        Assert.assertArrayEquals(Sort.insertSort(test05), b);
        // Assert.assertArrayEquals(Sort.insertSort(test06), c);
         Assert.assertArrayEquals(Sort.insertSort(test11), new Character[]{'a', 'b', 'c', 'd', 'e'});
