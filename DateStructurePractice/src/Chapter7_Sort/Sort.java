@@ -32,8 +32,7 @@ public class Sort {
     /**
      * 【算法名】插入排序
      * 【算法思想】将数据一个个地插入到排好序的数组中
-     * 【时间复杂度】采用希尔增量：O(N^2)，采用Hibbard增量：O(N^(3/2))
-     * 【其他】希尔增量：1，2，4，8..
+     * 【时间复杂度】O(N^2)
      *
      * @param array 待排序的数组（接受任意实现了comparable接口的对象）
      * @return 从小到大（正序）排好序的数组
@@ -67,7 +66,7 @@ public class Sort {
      * 【算法名】希尔排序（缩减增量排序）
      * 【算法思想】插入排序的改进，每次比较一个固定间隔的数据，然后逐渐缩小间隔直至间隔为1
      * 【时间复杂度】采用希尔增量：O(N^2)，采用希巴德（Hibbard）增量：O(N^(3/2))
-     * 【其他】希尔增量：1，2，4，8...2K
+     * 【其他】希尔增量：1，2，4，8...2^(k-1)
      * 希巴德增量：1，3，7，...，2^k - 1
      *
      * @param array 待排序的数组（接受任意实现了comparable接口的对象）
@@ -269,10 +268,10 @@ public class Sort {
         T pivot = median3(array, left, right);
         // 划分较大元素区和较小元素区
         int i = left;
-        int j = right;
+        int j = right - 1;
         while (true) {
             // 从左边起找到第一个比pivot大的值(因为pivot放在最右边,所以先移动左边)
-            while (i < j && array[i].compareTo(pivot) <= 0) {
+            while (i <= j && array[i].compareTo(pivot) <= 0) {
                 i++;
             }
             // 从右边起找到第一个比pivot小的值
