@@ -1,9 +1,10 @@
 package Chapter4_Tree;
 
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -35,8 +36,26 @@ public class BinaryTreeTest {
     static BinaryTree.BinaryNode t33;
     static BinaryTree.BinaryNode t34;
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    static BinaryTree.BinaryNode t41;
+    static BinaryTree.BinaryNode t42;
+    static BinaryTree.BinaryNode t43;
+    static BinaryTree.BinaryNode t44;
+    static BinaryTree.BinaryNode t45;
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+//    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+//        System.setErr(new PrintStream(errContent));
+    }
+
+    @After
+    public void cleanUpStreams() {
+        System.setOut(null);
+        System.setErr(null);
+    }
 
     @BeforeClass
     public static void setUp() {
@@ -60,6 +79,12 @@ public class BinaryTreeTest {
         t33 = new BinaryTree.BinaryNode(3, t34, null);
         t32 = new BinaryTree.BinaryNode(2, null, t33);
         t31 = new BinaryTree.BinaryNode(1, t32, null);
+        t45 = new BinaryTree.BinaryNode(5, null, null);
+        t44 = new BinaryTree.BinaryNode(4, t45, null);
+        t43 = new BinaryTree.BinaryNode(3, null, null);
+        t42 = new BinaryTree.BinaryNode(2, t43, t44);
+        t41 = new BinaryTree.BinaryNode(1, t42, null);
+
     }
 
     @Test
@@ -75,6 +100,22 @@ public class BinaryTreeTest {
         assertEquals("1234", t.s.toString());
         t.s.delete(0, t.s.length());
         t.DLR(t31);
+        assertEquals("1234", t.s.toString());
+    }
+
+    @Test
+    public void testDLRNonRecursion() throws Exception {
+        t.s.delete(0, t.s.length());
+        t.DLRNonRecursion(t1);
+        assertEquals("1245367", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.DLRNonRecursion(t11);
+        assertEquals("1234", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.DLRNonRecursion(t21);
+        assertEquals("1234", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.DLRNonRecursion(t31);
         assertEquals("1234", t.s.toString());
     }
 
@@ -95,6 +136,22 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void testLDRNonRecursioin() throws Exception {
+        t.s.delete(0, t.s.length());
+        t.LDRNonRecursioin(t1);
+        assertEquals("4251637", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.LDRNonRecursioin(t11);
+        assertEquals("4321", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.LDRNonRecursioin(t21);
+        assertEquals("1234", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.LDRNonRecursioin(t31);
+        assertEquals("2431", t.s.toString());
+    }
+
+    @Test
     public void testLRD() throws Exception {
         t.s.delete(0, t.s.length());
         t.LRD(t1);
@@ -108,5 +165,25 @@ public class BinaryTreeTest {
         t.s.delete(0, t.s.length());
         t.LRD(t31);
         assertEquals("4321", t.s.toString());
+    }
+
+
+    @Test
+    public void testLRDNonRecursion() throws Exception {
+        t.s.delete(0, t.s.length());
+        t.LRDNonRecursion(t1);
+        assertEquals("4526731", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.LRDNonRecursion(t11);
+        assertEquals("4321", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.LRDNonRecursion(t21);
+        assertEquals("4321", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.LRDNonRecursion(t31);
+        assertEquals("4321", t.s.toString());
+        t.s.delete(0, t.s.length());
+        t.LRDNonRecursion(t41);
+        assertEquals("35421", t.s.toString());
     }
 }
