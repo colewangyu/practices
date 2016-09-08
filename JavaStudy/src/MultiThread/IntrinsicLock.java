@@ -2,6 +2,7 @@ package MultiThread;
 
 /**
  * Created by wy on 2016-08-31.
+ * 内部锁测试
  */
 public class IntrinsicLock {
     public static void main(String[] args) {
