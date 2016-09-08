@@ -24,10 +24,14 @@ public class TalkingClock {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-
+                Date now = new Date();
+                System.out.println("At the tone, the time is " + now);
+                if (beep)
+                    Toolkit.getDefaultToolkit().beep();
+                Thread.currentThread().interrupt();
             }
         };
-        t.schedule(tt, 0);
+        t.schedule(tt, 2500);
     }
 
     public class TimePrinter implements ActionListener {
@@ -45,7 +49,7 @@ public class TalkingClock {
         TalkingClock tc = new TalkingClock(2500, true);
         //开启计时器线程
         tc.start();
-        for(int i = 0 ; i < 100; i++) {
+        for(int i = 1 ; i < 100; i++) {
             try {
                 Thread.sleep(1000);
                 System.out.println(i);
