@@ -1,40 +1,34 @@
 package HuaWei;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Created by wy on 2016-09-09.
- * 输出一个字符串的全排列
+ * 指定长度的全排列
+ * input: abc 2
+ * output: ab ab bc
  */
 public class FullArray {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String s = in.nextLine();
+        String s = in.next();
         int count = in.nextInt();
-        for (int i = 0; i <= s.length() - count; i++)
-            print(s, i, count, new StringBuffer());
-    }
-
-    private static void print(String s, int startIndex, int count, StringBuffer sb) {
-        StringBuffer sbTmp = new StringBuffer(sb);
-        // 满足条件时连续输出
-        if (startIndex >= (s.length() - count)) {
-            while (startIndex < s.length()) {
-                sbTmp.append(s.charAt(startIndex++));
-            }
-            System.out.println(sbTmp.toString());
+        if(count > s.length()) {
             return;
         }
-        // 递归输出
-        for (int i = startIndex; i < (s.length() - count); i++) {
-            sb.append(s.charAt(i));
-            if (--count > 0) {
-                print(s, i + 1, count, sbTmp);
-            } else {
-                System.out.println(sbTmp.toString());
-                return;
-            }
+        for (int i = 0; i < s.length(); i++) {
+            StringBuffer sb = new StringBuffer(String.valueOf(s.charAt(i)));
+            printRecursion(s, i + 1, count - 1, sb);
+        }
+    }
+
+    private static void printRecursion(String s, int index, int count, StringBuffer sb) {
+        if (count == 0)
+            System.out.print(sb.toString() + " ");
+        for (int i = index; i < s.length() && count > 0; i++) {
+            StringBuffer sbTmp = new StringBuffer(sb);
+            sbTmp.append(s.charAt(i));
+            printRecursion(s, i + 1, count - 1, sbTmp);
         }
     }
 }
