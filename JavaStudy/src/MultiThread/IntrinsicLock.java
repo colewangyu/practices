@@ -6,6 +6,11 @@ package MultiThread;
  */
 public class IntrinsicLock {
     public static void main(String[] args) {
+//        testObjLock();
+        testClassLock();
+    }
+
+    private static void testObjLock() {
         Thread t1 = new Thread(new Runnable() {
             Singlton singlton;
 
@@ -30,17 +35,37 @@ public class IntrinsicLock {
         });
         t1.start();
         t2.start();
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+    }
 
+    private static void testClassLock() {
+        final Multiton o1 = new Multiton();
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                o1.increaseCount();
+            }
+        });
+        final Multiton o2 = new Multiton();
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                o2.increaseCount();
+            }
+        });
+        t1.start();
+        t2.start();
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(Multiton.count);
     }
 }
 
 class Singlton {
-    public Singlton() {
+    private Singlton() {
     }
 
     private static Singlton instance;
@@ -61,5 +86,19 @@ class Singlton {
 
     public synchronized void decreaseCount() {
         count--;
+    }
+}
+
+class Multiton {
+    public Multiton() {
+    }
+
+    public static int count = 0;
+
+    public void increaseCount() {
+        synchronized (this) {
+            for (int i = 0; i < 50000; i++)
+                count++;
+        }
     }
 }
