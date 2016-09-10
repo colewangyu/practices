@@ -20,6 +20,10 @@ import java.util.Scanner;
 public class Escape {
     static int maxDistance = 0;
     public static void main(String[] args) {
+        doEscape();
+    }
+
+    public static void doEscape() {
         Scanner in = new Scanner(System.in);
         // 法力值
         int M = in.nextInt();
