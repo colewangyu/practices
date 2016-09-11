@@ -11,6 +11,10 @@ import java.util.Scanner;
  */
 public class WindowsAndFrame {
     public static void main(String[] args) {
+        doWindowsAndFrame();
+    }
+
+    public static void doWindowsAndFrame() {
         Scanner in = new Scanner(System.in);
         String[] strs = in.nextLine().split(",");
         int windowSize = Integer.valueOf(strs[0]);
@@ -18,18 +22,23 @@ public class WindowsAndFrame {
         if (windowSize == 0 || frameLen == 0)
             System.out.println("0,0");
         String str = strs[2];
-        // 计算最后一个窗口所占字符串长度
-        int tmp = str.length() % (windowSize * frameLen);
-        if (tmp == 0) {
-            System.out.println(windowSize + "," + frameLen);
-            return;
+        int lastWindowSize;
+        int lastFrameSize;
+        // 计算最后一个窗口的字符长度
+        lastWindowSize = str.length() % (windowSize * frameLen);
+        if(lastWindowSize == 0) {
+            // 刚好除尽的情况
+            lastWindowSize = windowSize;
+            lastFrameSize = frameLen;
         } else {
-            int lastWindowSize = tmp / frameLen;
-            lastWindowSize++;
-            int lastFrameLen = str.length() % frameLen;
-            if (lastFrameLen == 0)
-                lastFrameLen = frameLen;
-            System.out.println(lastWindowSize + "," + lastFrameLen);
+            // 计算最后一帧的大小
+            lastFrameSize = lastWindowSize % frameLen;
+            // 刚好除尽的情况
+            if(lastFrameSize == 0) {
+                lastFrameSize = frameLen;
+            }
+            lastWindowSize = lastWindowSize / frameLen + 1;
         }
+        System.out.println(lastWindowSize + "," + lastFrameSize);
     }
 }
