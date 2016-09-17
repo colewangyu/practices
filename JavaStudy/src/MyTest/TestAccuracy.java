@@ -1,5 +1,7 @@
 package MyTest;
 
+import java.util.ArrayList;
+
 /**
  * Created by cole on 2016-05-12 Thursday.
  */
@@ -17,6 +19,4 @@ public class TestAccuracy<T extends Comparable<? super T>> {
         System.out.println(d1 + " " + d2);
         System.out.println(d1 == d2);
     }
-
-
 }
