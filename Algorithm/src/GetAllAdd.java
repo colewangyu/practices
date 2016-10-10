@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Created by wy on 2016-08-09.
  */
-public class Netease {
+public class GetAllAdd {
 
     /**
      * 获取到所有的加数组合
