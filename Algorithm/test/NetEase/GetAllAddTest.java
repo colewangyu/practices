@@ -1,18 +1,20 @@
+package NetEase;
+
 import org.junit.After;
 import org.junit.Before;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by wy on 2016-08-09.
  */
-public class NeteaseTest {
+public class GetAllAddTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-    private final Netease t = new Netease();
+    private final GetAllAdd t = new GetAllAdd();
 
     @Before
     public void setUpStreams() {

@@ -1,3 +1,5 @@
+package NetEase;
+
 import java.util.ArrayList;
 
 /**
