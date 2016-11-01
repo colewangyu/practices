@@ -11,6 +11,7 @@ public class BigNumMultiple {
         Scanner in = new Scanner(System.in);
         String s1 = in.next();
         String s2 = in.next();
+        in.close();
         byte[] num1 = new byte[s1.length()];
         byte[] num2 = new byte[s2.length()];
         byte[] result = new byte[num1.length + num2.length];

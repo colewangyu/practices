@@ -51,4 +51,10 @@ public class _7_ReverseIntegerTest {
     public void testReverse6() throws Exception {
         assertEquals(-1,t.reverse(-100));
     }
+
+    @Test
+    public void testReverse7() throws Exception {
+        assertEquals(0,t.reverse(1534246369));
+    }
+
 }

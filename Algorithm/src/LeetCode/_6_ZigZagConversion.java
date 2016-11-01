@@ -2,23 +2,30 @@ package LeetCode;
 
 /**
  * Created by cole on 2016-10-30.
- * 示例:
- * P   A   H   N
- * A P L S I I G
- * Y   I   R
- *
- * 输入: PAYPALISHIRING, 3
- * 输出: PAHNAPLSIIGYIR
- *
- * P    I    N
- * A  L S  I G
- * Y A  H R
- * P    I
- *
- * 输入: PAYPALISHIRING, 3
- * 输出:PINALSIGYAHRPI
  */
 public class _6_ZigZagConversion {
+    /**
+     * 按照如下规则进行输出:
+     * 示例:
+     * P   A   H   N
+     * A P L S I I G
+     * Y   I   R
+     *
+     * 输入: PAYPALISHIRING, 3
+     * 输出: PAHNAPLSIIGYIR
+     *
+     * P    I    N
+     * A  L S  I G
+     * Y A  H R
+     * P    I
+     *
+     * 输入: PAYPALISHIRING, 3
+     * 输出:PINALSIGYAHRPI
+     *
+     * @param s
+     * @param numRows
+     * @return
+     */
     public String convert(String s, int numRows) {
         StringBuffer result = new StringBuffer();
         StringBuffer[] sbs = new StringBuffer[numRows];
