@@ -18,3 +18,6 @@ java*.index
 java*.hprof
 java*.threads
 java*.zip
+
+#忽略系统文件
+.DS_Store
