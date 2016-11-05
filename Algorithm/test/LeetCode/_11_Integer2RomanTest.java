@@ -234,7 +234,7 @@ public class _11_Integer2RomanTest {
     }
     @Test
     public void testIntToRoman50() throws Exception {
-        assertEquals("MMMCMXCIX", t.intToRoman(3999));
+        assertEquals("MMMCMXCI", t.intToRoman(3999));
     }
     @Test
     public void testIntToRoman51() throws Exception {
