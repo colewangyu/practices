@@ -9,12 +9,12 @@ import static org.junit.Assert.*;
 /**
  * Created by cole on 2016-11-05.
  */
-public class _11_Integer2RomanTest {
-    _11_Integer2Roman t;
+public class _12_Integer2RomanTest {
+    _12_Integer2Roman t;
 
     @Before
     public void setUp() throws Exception {
-        t = new _11_Integer2Roman();
+        t = new _12_Integer2Roman();
     }
 
     @After

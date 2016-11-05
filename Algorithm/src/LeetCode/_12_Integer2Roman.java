@@ -7,7 +7,7 @@ package LeetCode;
  * Input is guaranteed to be within the range from 1 to 3999.
  * </p>
  */
-public class _11_Integer2Roman {
+public class _12_Integer2Roman {
     public String intToRoman(int num) {
         if(num < 0 || num > 3999)
             return "";
