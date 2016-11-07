@@ -55,11 +55,11 @@ public class _13_Roman2Integer {
             } else if (sb.length() >= 1 && roman.containsKey(tmp = sb.substring(0, 1))) {
                 tmpRoman = roman.get(tmp);
                 if(oldRoman > tmpRoman) {
-                    count = 0;
+                    count = 1;
                     oldRoman = tmpRoman;
                     result += tmpRoman;
                     sb.delete(0, 1);
-                } else if(oldRoman < tmpRoman || (oldRoman == tmpRoman && count > 3)) {
+                } else if(oldRoman < tmpRoman || (oldRoman == tmpRoman && count >= 3)) {
                     return 0;
                 } else {
                     count++;
