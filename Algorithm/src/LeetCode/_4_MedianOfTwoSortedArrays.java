@@ -14,24 +14,48 @@ public class _4_MedianOfTwoSortedArrays {
                     findKthSortedArrays(nums1, 0, m, nums2, 0, n, (n + m) / 2)) / 2.0;
     }
 
-    private double findKthSortedArrays(int A[], int astart, int aend,
-                                       int B[], int bstart, int bend, int k) {
-        int m = aend - astart, n = bend - bstart;
-        if (m < n) {
-            return findKthSortedArrays(B, bstart, bend, A, astart, aend, k);
-        }
-        if (n == 0)
-            return A[astart + k - 1];
-        if (k == 1)
-            return Math.min(A[astart], B[bstart]);
+    private double findKthSortedArrays(int a[], int aStart, int aEnd,
+                                       int b[], int bStart, int bEnd, int k) {
+        if (a == null && b == null)
+            throw new NullPointerException();
+        if (aStart == aEnd && bStart == bEnd || k > (aEnd + bEnd - aStart - bStart))
+            throw new IllegalArgumentException();
 
-        int pb = Math.min(k / 2, n), pa = k - pb;
-        if (A[astart + pa - 1] > B[bstart + pb - 1])
-            return findKthSortedArrays(A, astart, aend, B, bstart + pb, bend, k - pb);
-        else if (A[astart + pa - 1] < B[bstart + pb - 1])
-            return findKthSortedArrays(A, astart + pa, aend, B, bstart, bend, k - pa);
-        else
-            return A[astart + pa - 1];
+        // 一次计算中a数组中可能被抛弃的数的数量
+        int aGap;
+        // 一次计算中b数组中可能被抛弃的数的数量
+        int bGap;
+        while (true) {
+            if (aEnd - aStart < bEnd - bStart) {
+                int[] obj = a;
+                a = b;
+                b = obj;
+                aStart = aStart ^ bStart;
+                bStart = aStart ^ bStart;
+                aStart = aStart ^ bStart;
+                aEnd = a.length;
+                bEnd = b.length;
+            }
+
+            if (bStart == bEnd)
+                return a[aStart + k - 1];
+            if (k == 1)
+                return Math.min(a[aStart], b[bStart]);
+
+            // 避免溢出
+            bGap = Math.min(k / 2, bEnd - bStart);
+            aGap = k - bGap;
+            if (a[aStart + aGap - 1] > b[bStart + bGap - 1]) {
+                // 抛弃比较小的b中的数
+                bStart += bGap;
+                k -= bGap;
+            } else if (a[aStart + aGap - 1] < b[bStart + bGap - 1]) {
+                aStart += aGap;
+                k -= aGap;
+            } else {
+                return a[aStart + aGap - 1];
+            }
+        }
     }
 //    /**
 //     * 时间复杂度:O(n+m)
