@@ -16,15 +16,26 @@ public class _15_3Sum {
         // 排序
         Arrays.sort(nums);
 
-        int sum;
-        int twoSum;
-        List<Integer> tmpList;
         for (int i = 0; i < nums.length - 2; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
-            sum = -nums[i];
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
             // 求两数和等于sum
-            twoSum(nums, resultList, sum, i, nums.length - 1);
+            twoSum(nums, resultList, -nums[i], i, nums.length - 1);
         }
+
+//        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+//        for (int i = 0; i < nums.length; i++) {
+//            if (map.containsKey(nums[i])) {
+//                map.put(nums[i], map.get(nums[i]) + 1);
+//            } else {
+//                map.put(nums[i], 1);
+//            }
+//        }
+//        Iterator<Integer> it = map.keySet().iterator();
+//        for (; it.hasNext(); ) {
+//            // 求两数和等于sum
+//            twoSum(resultList, map, -it.next());
+//        }
         return resultList;
     }
 
@@ -52,6 +63,37 @@ public class _15_3Sum {
                 while (right > left && nums[right] == nums[right + 1]) {
                     right--;
                 }
+            }
+        }
+    }
+
+    // TODO: 2016-11-15
+    private void twoSum(List<List<Integer>> resultList, Map<Integer, Integer> numsMap, int target) {
+        int count = 1;
+        int tmp;
+        List<Integer> listTmp;
+
+        Iterator<Integer> it = numsMap.keySet().iterator();
+        for (; it.hasNext(); ) {
+            tmp = it.next();
+            if (tmp == -target) {
+                if (numsMap.get(tmp) > count)
+                    count++;
+                else
+                    continue;
+            }
+            if (tmp == target - tmp) {
+                if (numsMap.get(tmp) > count)
+                    count++;
+                else
+                    continue;
+            }
+            if (numsMap.containsKey(target - tmp)) {
+                listTmp = new ArrayList<Integer>();
+                listTmp.add(-target);
+                listTmp.add(tmp);
+                listTmp.add(target - tmp);
+                resultList.add(listTmp);
             }
         }
     }
