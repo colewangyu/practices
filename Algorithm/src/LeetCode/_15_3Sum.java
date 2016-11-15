@@ -1,8 +1,6 @@
 package LeetCode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by wy on 2016-11-13.
@@ -25,40 +23,36 @@ public class _15_3Sum {
             if (i > 0 && nums[i] == nums[i - 1]) continue;
             sum = -nums[i];
             // 求两数和等于sum
-            int left = i + 1, right = nums.length - 1;
-            while (left < right) {
-                twoSum = nums[left] + nums[right];
-                if (twoSum > sum) {
-                    right--;
-                } else if (twoSum < sum) {
+            twoSum(nums, resultList, sum, i, nums.length - 1);
+        }
+        return resultList;
+    }
+
+    private void twoSum(int[] nums, List<List<Integer>> resultList, int target, int start, int end) {
+        int twoSum;
+        List<Integer> tmpList;
+        int left = start + 1, right = end;
+        while (left < right) {
+            twoSum = nums[left] + nums[right];
+            if (twoSum > target) {
+                right--;
+            } else if (twoSum < target) {
+                left++;
+            } else {
+                tmpList = new ArrayList<Integer>();
+                tmpList.add(nums[start]);
+                tmpList.add(nums[left]);
+                tmpList.add(nums[right]);
+                resultList.add(tmpList);
+                left++;
+                right--;
+                while (left < right && nums[left] == nums[left - 1]) {
                     left++;
-                } else {
-                    tmpList = new ArrayList<Integer>();
-                    if (i < left) {
-                        tmpList.add(nums[i]);
-                        tmpList.add(nums[left]);
-                        tmpList.add(nums[right]);
-                    } else if (left < i && i < right) {
-                        tmpList.add(nums[left]);
-                        tmpList.add(nums[i]);
-                        tmpList.add(nums[right]);
-                    } else {
-                        tmpList.add(nums[left]);
-                        tmpList.add(nums[right]);
-                        tmpList.add(nums[i]);
-                    }
-                    left++;
+                }
+                while (right > left && nums[right] == nums[right + 1]) {
                     right--;
-                    while (left < right && nums[left] == nums[left - 1]) {
-                        left++;
-                    }
-                    while (right > left && nums[right] == nums[right + 1]) {
-                        right--;
-                    }
-                    resultList.add(tmpList);
                 }
             }
         }
-        return resultList;
     }
 }
