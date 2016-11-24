@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static LeetCode._19_RemoveNthNodeFromEnd.*;
 
 /**
  * Created by cole on 2016-11-24.

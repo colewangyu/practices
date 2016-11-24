@@ -34,14 +34,16 @@ public class _19_RemoveNthNodeFromEnd {
         }
         return head;
     }
-}
 
-class ListNode {
-    int val;
-    ListNode next;
+    public static class ListNode {
+        int val;
+        ListNode next;
 
-    ListNode(int x) {
-        val = x;
+        ListNode(int x) {
+            val = x;
+        }
     }
 }
+
+
 
