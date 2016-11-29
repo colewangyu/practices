@@ -6,31 +6,36 @@ import java.util.Iterator;
  * Created by wy on 2016-09-12.
  */
 public class RandomArrayWithoutRepeat {
-    public static void main(String[] args) {
-        int[] r = printNoRepeat(new int[]{2, 4, 5, 5}, 3);
-        for (int i : r) {
-            System.out.print(i + " ");
-        }
-    }
+    /**
+     * 打印数组中不重复的数字
+     *
+     * @param n 数组
+     * @param m 不重复数字的数量
+     * @return 输出含有指定个不重复数字的数组
+     */
+    public int[] printNoRepeat(int[] n, int m) {
+        int[] result;
+        HashMap<Integer, Integer> map;
 
-    public static int[] printNoRepeat(int[] n, int m) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        ArrayList<Integer> arrIndex = new ArrayList<Integer>();
-        int[] result = new int[m];
+        map = new HashMap<Integer, Integer>();
         for (int i = 0; i < n.length; i++) {
             map.put(n[i], 0);
-        }
-        Iterator<Integer> it = map.keySet().iterator();
-        while(it.hasNext()) {
-            int i = it.next();
-            arrIndex.add(i);
+            if (map.size() == m) {
+                break;
+            }
         }
 
-        for (int i = 0; i < m; i++) {
-            int tmp = (int) (Math.random() * arrIndex.size());
-            result[i] = arrIndex.get(tmp);
-            arrIndex.remove(tmp);
+        if(m > map.size())
+            throw new IllegalArgumentException("m = " + m + " > " + map.size());
+
+        Iterator<Integer> it = map.keySet().iterator();
+        result = new int[map.size()];
+        int index = 0;
+        while(it.hasNext() && index < map.size()) {
+            result[index] = it.next();
+            index++;
         }
+
         return result;
     }
 }
