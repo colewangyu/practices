@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 /**
  * Created by cole on 2016-11-30.
  */
-public class _22_MergeKSortedLists {
+public class _23_MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
         ListNode result = null;
         PriorityQueue<Integer> pq;

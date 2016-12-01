@@ -4,19 +4,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static LeetCode._22_MergeKSortedLists.ListNode;
+import static LeetCode._23_MergeKSortedLists.ListNode;
 import static org.junit.Assert.*;
 
 
 /**
  * Created by cole on 2016-11-30.
  */
-public class _22_MergeKSortedListsTest {
-    _22_MergeKSortedLists t;
+public class _23_MergeKSortedListsTest {
+    _23_MergeKSortedLists t;
 
     @Before
     public void setUp() throws Exception {
-        t = new _22_MergeKSortedLists();
+        t = new _23_MergeKSortedLists();
     }
 
     @After
