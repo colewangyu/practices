@@ -5,17 +5,21 @@ package LeetCode;
  */
 public class _26_RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
-        if(nums == null) {
+        if (nums == null) {
             throw new NullPointerException();
         }
-        if(nums.length == 0) {
+        if (nums.length == 0) {
             return 0;
         }
-        int result =1;
-        for(int i = 1; i < nums.length; i ++) {
-            if(nums[i] == nums[i-1]) {
+        int result;
+        int index;
+        result = 1;
+        index = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
 
             } else {
+                nums[index++] = nums[i];
                 result++;
             }
         }
