@@ -9,36 +9,46 @@ package LeetCode;
  */
 public class _29_DivideTwoIntegers {
     public int divide(int dividend, int divisor) {
-        int result;
-        result = 0;
-
         if (divisor == 0) {
-            throw new ArithmeticException();
-        } else if (dividend == 0) {
-            return 0;
+            throw new ArithmeticException("divide zero.");
         }
 
-        int tmpDivisor;
-        if (divisor < 0)
-            tmpDivisor = -divisor;
-        else
-            tmpDivisor = divisor;
+        int result;
+        boolean isNegative;
+        int digital;
 
-        if (dividend == Integer.MIN_VALUE && divisor == -1) {
-            result = Integer.MAX_VALUE;
-        } else if (dividend > 0) {
-            while ((dividend -= tmpDivisor) >= 0) {
-                result++;
-            }
-            if (divisor < 0)
-                result = -result;
-        } else {
-            while ((dividend += tmpDivisor) <= 0) {
-                result++;
-            }
-            if (divisor > 0)
-                result = -result;
+        result = 0;
+        isNegative = (dividend ^ divisor) >>> 31 == 1;
+        // 处理溢出情况
+        if (dividend == Integer.MIN_VALUE) {
+            dividend += Math.abs(divisor);
+            if(divisor == -1)
+                return Integer.MAX_VALUE;
+            result++;
         }
-        return result;
+
+        if(divisor == Integer.MIN_VALUE) {
+            return result;
+        }
+
+        dividend = Math.abs(dividend);
+        divisor = Math.abs(divisor);
+
+        digital = 0;
+        while (divisor <= dividend >>> 1) {  //此代码的关键,divisor不断x2与dividend/2比较
+            divisor <<= 1;
+            digital++;
+        }
+
+        while (digital >= 0) {
+            if(dividend >= divisor) {
+                result += 1 << digital;
+                dividend -= divisor;
+            }
+            divisor >>= 1;
+            digital--;
+        }
+
+        return isNegative ? -result : result;
     }
 }

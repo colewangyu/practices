@@ -33,42 +33,77 @@ public class _29_DivideTwoIntegersTest {
      */
     @Test
     public void testDivide1() throws Exception {
-        assertEquals(2,t.divide(4,2));
-        assertEquals(-2,t.divide(4,-2));
+        assertEquals(2, t.divide(4, 2));
+        assertEquals(-2, t.divide(4, -2));
     }
 
     @Test
     public void testDivide2() throws Exception {
-        assertEquals(2,t.divide(5,2));
-        assertEquals(-2,t.divide(5,-2));
+        assertEquals(2, t.divide(5, 2));
+        assertEquals(-2, t.divide(5, -2));
     }
 
     @Test
     public void testDivide3() throws Exception {
-        assertEquals(-2,t.divide(-4,2));
-        assertEquals(2,t.divide(-4,-2));
+        assertEquals(-2, t.divide(-4, 2));
+        assertEquals(2, t.divide(-4, -2));
     }
 
     @Test
     public void testDivide4() throws Exception {
-        assertEquals(-2,t.divide(-5,2));
-        assertEquals(2,t.divide(-5,-2));
+        assertEquals(-2, t.divide(-5, 2));
+        assertEquals(2, t.divide(-5, -2));
     }
 
     @Test
     public void testDivide5() throws Exception {
-        assertEquals(0,t.divide(0,2));
+        assertEquals(0, t.divide(0, 2));
     }
 
     @Test
     public void testDivide6() throws Exception {
-        assertEquals(4,t.divide(4,1));
-        assertEquals(-4,t.divide(4,-1));
+        assertEquals(4, t.divide(4, 1));
+        assertEquals(-4, t.divide(4, -1));
     }
 
     @Test
     public void testDivide7() throws Exception {
-        assertEquals(Integer.MAX_VALUE,t.divide(-2147483648,-1));
+        assertEquals(Integer.MAX_VALUE, t.divide(-2147483648, -1));
+    }
+
+    @Test
+    public void testDivide8() throws Exception {
+        assertEquals(1, t.divide(1, 1));
+    }
+
+    @Test
+    public void testDivide9() throws Exception {
+        assertEquals(3, t.divide(19, 5));
+    }
+
+    @Test
+    public void testDivide10() throws Exception {
+        assertEquals(Integer.MAX_VALUE, t.divide(Integer.MAX_VALUE, 1));
+    }
+
+    @Test
+    public void testDivide11() throws Exception {
+        assertEquals(Integer.MIN_VALUE, t.divide(Integer.MIN_VALUE, 1));
+    }
+
+    @Test
+    public void testDivide12() throws Exception {
+        assertEquals(0, t.divide(1, Integer.MIN_VALUE));
+    }
+
+    @Test
+    public void testDivide13() throws Exception {
+        assertEquals(1, t.divide(Integer.MIN_VALUE, Integer.MIN_VALUE));
+    }
+
+    @Test
+    public void testDivide14() throws Exception {
+        assertEquals(1, t.divide(Integer.MIN_VALUE, Integer.MIN_VALUE + 1));
     }
 
 }
