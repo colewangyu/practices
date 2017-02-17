@@ -19,7 +19,7 @@ import java.util.List;
  * [3,1,2],
  * [3,2,1]
  * ]
- *
+ * <p/>
  * 【解题思路】使用递归遍历每一种组合，每次加入一个数就从临时表中删除该数
  */
 public class _46_Permutations {
@@ -27,33 +27,21 @@ public class _46_Permutations {
         List<List<Integer>> result;
         result = new ArrayList<List<Integer>>();
 
-        HashSet<Integer> numsSet;
-        numsSet = new HashSet<Integer>();
-        for(int i : nums) {
-            numsSet.add(i);
-        }
-
-        findPermutations(numsSet, new ArrayList<Integer>(),  result);
+        findPermutations(nums, 0, new ArrayList<Integer>(), result);
         return result;
     }
 
-    private void findPermutations(HashSet<Integer> nums, ArrayList<Integer> tmpResult, List<List<Integer>> result) {
-        if(nums.size() == 0) {
+    private void findPermutations(int[] nums, int curIndex, ArrayList<Integer> tmpResult, List<List<Integer>> result) {
+        if (curIndex >= nums.length) {
             result.add(tmpResult);
+            return;
         } else {
-            int tmpInteger;
             ArrayList<Integer> tmpList;
-            HashSet<Integer> tmpNums;
-            Iterator<Integer> it = nums.iterator();
-            while(it.hasNext()) {
-                tmpInteger = it.next();
-                tmpNums = new HashSet<Integer>();
-                tmpNums.addAll(nums);
-                tmpNums.remove(tmpInteger);
+            for (int i = 0; i <= tmpResult.size(); i++) {
                 tmpList = new ArrayList<Integer>();
                 tmpList.addAll(tmpResult);
-                tmpList.add(tmpInteger);
-                findPermutations(tmpNums, tmpList, result);
+                tmpList.add(i, nums[curIndex]);
+                findPermutations(nums, curIndex + 1, tmpList, result);
             }
         }
     }
