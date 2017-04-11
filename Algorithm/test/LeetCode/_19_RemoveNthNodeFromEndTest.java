@@ -1,12 +1,13 @@
 package LeetCode;
 
+import LeetCode.Medium._19_RemoveNthNodeFromEnd;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static LeetCode._19_RemoveNthNodeFromEnd.*;
+import static LeetCode.Medium._19_RemoveNthNodeFromEnd.*;
 
 /**
  * Created by cole on 2016-11-24.

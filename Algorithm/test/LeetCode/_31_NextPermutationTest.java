@@ -1,5 +1,6 @@
 package LeetCode;
 
+import LeetCode.Medium._31_NextPermutation;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

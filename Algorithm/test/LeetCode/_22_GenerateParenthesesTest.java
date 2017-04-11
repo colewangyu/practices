@@ -1,5 +1,6 @@
 package LeetCode;
 
+import LeetCode.Medium._22_GenerateParentheses;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

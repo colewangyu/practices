@@ -1,11 +1,12 @@
 package LeetCode;
 
+import LeetCode.Hard._25_ReverseNodesInKGroup;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static LeetCode._25_ReverseNodesInKGroup.ListNode;
+import static LeetCode.Hard._25_ReverseNodesInKGroup.ListNode;
 
 /**
  * Created by wy on 2016-12-01.

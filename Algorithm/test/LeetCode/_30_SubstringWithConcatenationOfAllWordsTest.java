@@ -1,5 +1,6 @@
 package LeetCode;
 
+import LeetCode.Hard._30_SubstringWithConcatenationOfAllWords;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

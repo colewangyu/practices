@@ -1,10 +1,11 @@
 package LeetCode;
 
+import LeetCode.Hard._23_MergeKSortedLists;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static LeetCode._23_MergeKSortedLists.ListNode;
+import static LeetCode.Hard._23_MergeKSortedLists.ListNode;
 import static org.junit.Assert.*;
 
 
