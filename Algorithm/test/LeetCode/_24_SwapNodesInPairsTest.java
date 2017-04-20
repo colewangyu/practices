@@ -1,11 +1,12 @@
 package LeetCode;
 
+import LeetCode.Medium._24_SwapNodesInPairs;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static LeetCode._24_SwapNodesInPairs.ListNode;
+import static LeetCode.Medium._24_SwapNodesInPairs.ListNode;
 
 /**
  * Created by wy on 2016-12-01.

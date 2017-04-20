@@ -1,5 +1,6 @@
 package LeetCode;
 
+import LeetCode.Easy._7_ReverseInteger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

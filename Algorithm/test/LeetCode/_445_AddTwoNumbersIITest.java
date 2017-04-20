@@ -1,9 +1,10 @@
 package LeetCode;
 
+import LeetCode.Medium._445_AddTwoNumbersII;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import LeetCode._445_AddTwoNumbersII.ListNode;
+import LeetCode.Medium._445_AddTwoNumbersII.ListNode;
 
 import static org.junit.Assert.*;
 

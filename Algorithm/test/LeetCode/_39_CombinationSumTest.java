@@ -1,5 +1,6 @@
 package LeetCode;
 
+import LeetCode.Medium._39_CombinationSum;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

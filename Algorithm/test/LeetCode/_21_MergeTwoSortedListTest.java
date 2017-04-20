@@ -1,11 +1,12 @@
 package LeetCode;
 
+import LeetCode.Easy._21_MergeTwoSortedList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static LeetCode._21_MergeTwoSortedList.*;
+import static LeetCode.Easy._21_MergeTwoSortedList.*;
 
 /**
  * Created by cole on 2016-11-24.

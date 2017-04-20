@@ -1,9 +1,7 @@
 package LeetCode;
 
-import com.sun.org.apache.xerces.internal.dom.PSVIAttrNSImpl;
-import com.sun.org.apache.xerces.internal.impl.dv.xs.IntegerDV;
+import LeetCode.Medium._8_String2Integer;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
