@@ -14,17 +14,11 @@ package LeetCode.Medium;
  */
 public class _55_JumpGame {
     public boolean canJump(int[] nums) {
-        return getIndex(0, nums);
-    }
-
-    private boolean getIndex(int index, int[] nums) {
-        if(index == nums.length - 1)
-            return true;
-        int len = nums[index];
-        for(int i = 0; len > 0; len--,i++) {
-            if(getIndex(i, nums) == true)
-                return true;
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (max < i) return false;
+            max = Math.max(max, i + nums[i]);
         }
-        return false;
+        return true;
     }
 }
