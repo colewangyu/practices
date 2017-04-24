@@ -21,55 +21,41 @@ public class _30_SubstringWithConcatenationOfAllWords {
             return result;
 
         int lenOfWord;
-        Map<String, Integer> times;
+        Map<String, Integer> timesMap;
         lenOfWord = words[0].length();
-        times = new HashMap<String, Integer>();
+        // map for words
+        timesMap = new HashMap<String, Integer>();
         for (String str : words) {
-            if (times.containsKey(str)) {
-                times.put(str, times.get(str) + 1);
+            if (timesMap.containsKey(str)) {
+                timesMap.put(str, timesMap.get(str) + 1);
             } else {
-                times.put(str, 1);
+                timesMap.put(str, 1);
             }
         }
-
+        // check word one by one
         for (int i = 0; i <= (s.length() - words.length * lenOfWord); i++) {
             Map<String, Integer> tmpTimes = new HashMap<String, Integer>();
-            tmpTimes.putAll(times);
-            findSubstring(s, words, tmpTimes, i, i, result, lenOfWord);
-        }
-        return result;
-    }
-
-    private void findSubstring(String s, String[] words, Map<String, Integer> times, int startIndex, int index, List<Integer> result, int lenOfWord) {
-        if (isASubstring(times)) {
-            result.add(startIndex);
-            return;
-        }
-
-        String word = s.substring(index, index + lenOfWord);
-        if (isContain(words, times, word)) {
-            times.put(word, times.get(word) - 1);
-            Map<String, Integer> tmpTimes = new HashMap<String, Integer>();
-            tmpTimes.putAll(times);
-            findSubstring(s, words, tmpTimes, startIndex, index + lenOfWord, result, lenOfWord);
-        }
-    }
-
-    private boolean isContain(String[] words, Map<String, Integer> times, String word) {
-        for (String s : words) {
-            if (s.equals(word) && times.get(word) > 0) {
-                return true;
+            tmpTimes.putAll(timesMap);
+            for(int j = 0; j < words.length; j++) {
+                // get word one by one
+                String str = s.substring(i + j*lenOfWord, i + j*lenOfWord + lenOfWord);
+                // match
+                if(tmpTimes.containsKey(str)) {
+                    int time = tmpTimes.get(str);
+                    if(time == 1) {
+                        // remove
+                        tmpTimes.remove(str);
+                        if(tmpTimes.isEmpty()) {
+                            result.add(i);
+                        }
+                    } else {
+                        tmpTimes.put(str, time-1);
+                    }
+                } else {
+                    break;
+                }
             }
         }
-        return false;
-    }
-
-    private boolean isASubstring(Map<String, Integer> times) {
-        Iterator<String> it = times.keySet().iterator();
-        while (it.hasNext()) {
-            if (times.get(it.next()) != 0)
-                return false;
-        }
-        return true;
+        return result;
     }
 }
