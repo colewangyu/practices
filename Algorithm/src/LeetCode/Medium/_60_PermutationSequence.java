@@ -24,33 +24,39 @@ public class _60_PermutationSequence {
     public String getPermutation(int n, int k) {
         StringBuilder result;
         result = new StringBuilder();
-        List<Integer> list;
-        list = new ArrayList<Integer>();
-        for (int i = 1; i <= n; i++) {
-            list.add(i);
-        }
-        int factorial;
-        int index;
-        int number;
-        number = k;
-        for (int i = 0; i < n; i++) {
-            if (i == n - 1) {
-                result.append(list.get(0));
-                break;
+
+        if (n == 1 && k == 1) {
+            result.append(1);
+        } else {
+
+            List<Integer> list;
+            int[] factorial;  // 各个数的阶乘
+            int index;
+            int number;
+
+            list = new ArrayList<Integer>();
+            factorial = new int[n];
+            for (int i = 1; i <= n; i++) {
+                list.add(i);
             }
-            factorial = factorial(list.size() - 1);
-            index = (int) Math.ceil((double) number / (double) factorial);
-            number -= factorial * (index - 1);
-            result.append(list.get(index - 1));
-            list.remove(index - 1);
+            factorial[0] = 1;
+            factorial[1] = 1;
+            for (int i = 2; i < n; i++) {
+                factorial[i] = factorial[i - 1] * i;
+            }
+            number = k;
+            for (int i = 0; i < n; i++) {
+                if (i == n - 1) {
+                    result.append(list.get(0));
+                    break;
+                }
+                int tmp = factorial[list.size() - 1];
+                index = (int) Math.ceil((double) number / (double) tmp);
+                number -= tmp * (index - 1);
+                result.append(list.get(index - 1));
+                list.remove(index - 1);
+            }
         }
         return result.toString();
-    }
-
-    private static int factorial(int n) {
-        int result = 1;
-        for (int i = 2; i <= n; i++)
-            result *= i;
-        return result;
     }
 }
