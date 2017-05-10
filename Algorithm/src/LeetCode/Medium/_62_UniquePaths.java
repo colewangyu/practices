@@ -11,25 +11,16 @@ package LeetCode.Medium;
  */
 public class _62_UniquePaths {
     public int uniquePaths(int m, int n) {
-        int result;
-        result = 0;
-        result += findPath(result, 1, 1, m, n);
-        return result;
-    }
-
-    private int findPath(int result, int row, int col, int m, int n) {
-        if (row == m && col == n) {
-            return 1;
-        } else if (row == m) {
-            result += findPath(result, row, col + 1, m, n);
-        } else if (col == n) {
-            result += findPath(result, row + 1, col, m, n);
-        } else {
-            int tmpResult;
-            tmpResult = result;
-            result += findPath(tmpResult, row + 1, col, m, n);
-            result += findPath(tmpResult, row, col + 1, m, n);
+        int[][] map;
+        map = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 || j == 0)
+                    map[i][j] = 1;
+                else
+                    map[i][j] = map[i - 1][j] + map[i][j - 1];
+            }
         }
-        return result;
+        return map[m - 1][n - 1];
     }
 }
