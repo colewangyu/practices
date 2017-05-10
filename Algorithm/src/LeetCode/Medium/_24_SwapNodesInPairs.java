@@ -35,7 +35,7 @@ public class _24_SwapNodesInPairs {
     }
 
     public static class ListNode {
-        int val;
+        public int val;
         public ListNode next;
 
         public ListNode(int x) {
