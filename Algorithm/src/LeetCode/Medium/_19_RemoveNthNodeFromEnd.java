@@ -37,9 +37,9 @@ public class _19_RemoveNthNodeFromEnd {
 
     public static class ListNode {
         int val;
-        ListNode next;
+        public ListNode next;
 
-        ListNode(int x) {
+        public ListNode(int x) {
             val = x;
         }
     }
